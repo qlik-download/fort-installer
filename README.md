@@ -89,9 +89,9 @@ Use "qliksense [command] --help" for more information about a command.
 qliksense uninstall
 ```
 
-it will remove the fort deploument from kubernetes cluster (k3d), So next time doing `qliksense install` will be faster as all the docker images are already present in cluster
+it will remove the fort deploument from kubernetes(k3d) cluster, So next time doing `qliksense install` will be faster as all the docker images are already present in cluster
 
-### To remove cluste
+### To remove cluster
 
 ```shell
 qliksense delete
