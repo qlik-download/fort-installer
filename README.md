@@ -89,4 +89,4 @@ To uninstall fort
 
 To remove cluster
 
-- `k3d cluster delete fort` # it will delete kubernetes cluster, so next time doing `qliksense install` will take as much time as it took initially
+- `qliksense delete` # it will delete kubernetes cluster, so next time doing `qliksense install` will take as much time as it took initially
