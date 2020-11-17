@@ -42,8 +42,16 @@ How to create Fort:
 	# WARNING: It might take 5-20 minitues depending on your internet speed
 	# execute following command to check the status of fort deployment
 	qliksense status
+	qliksense status -w
 
 	# IMPORTANT: Once Fort is running, goto tenant url in your browser and do login, then open another tab https://myfort.example/sense/apps and accept the certificate
+
+How to clean up:
+	# To remove the fort deployment
+	qliksense uninstall
+
+	# To remove underlying kubernetes(k3d) cluster
+	qliksense delete
 
 Usage:
   qliksense [command]
@@ -52,6 +60,7 @@ Available Commands:
   apply       install qliksense based on provided cr file
   config      do operations on/around CR
   crds        crds for qliksense and operators
+  delete      delete the kubernetes(k3d) cluster
   fetch       fetch a release from qliksense-k8s repo, if version not supplied, will use from context
   generate    generate keypair, config, etc for qliksense and operators
   help        Help about any command
@@ -69,3 +78,15 @@ Flags:
 
 Use "qliksense [command] --help" for more information about a command.
 ```
+
+## Clean up
+
+`qliksense install` creates a kubernetes cluster on top of `k3d` and install fort in that cluster.
+
+To uninstall fort 
+
+- `qliksense uninstall` # it will remove the fort deploument from kubernetes cluster (k3d), So next time doing `qliksense install` will be faster as all the docker images are already present in cluster
+
+To remove cluster
+
+- `k3d cluster delete fort` # it will delete kubernetes cluster, so next time doing `qliksense install` will take as much time as it took initially
