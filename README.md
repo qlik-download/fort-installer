@@ -83,10 +83,18 @@ Use "qliksense [command] --help" for more information about a command.
 
 `qliksense install` creates a kubernetes cluster on top of `k3d` and install fort in that cluster.
 
-To uninstall fort 
+### To uninstall fort
 
-- `qliksense uninstall` # it will remove the fort deploument from kubernetes cluster (k3d), So next time doing `qliksense install` will be faster as all the docker images are already present in cluster
+```shell
+qliksense uninstall
+```
 
-To remove cluster
+it will remove the fort deploument from kubernetes cluster (k3d), So next time doing `qliksense install` will be faster as all the docker images are already present in cluster
 
-- `qliksense delete` # it will delete kubernetes cluster, so next time doing `qliksense install` will take as much time as it took initially
+### To remove cluste
+
+```shell
+qliksense delete
+```
+
+it will delete underlying kubernetes(k3d) cluster, so next time doing `qliksense install` will take as much time as it took initially
