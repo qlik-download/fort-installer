@@ -98,3 +98,5 @@ qliksense delete
 ```
 
 it will delete underlying kubernetes(k3d) cluster, so next time doing `qliksense install` will take as much time as it took initially
+
+_NOTE_: The above commands will not delete fort from the tenant. It has to be done manually in Administration inside management console.
