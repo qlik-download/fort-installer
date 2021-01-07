@@ -34,8 +34,9 @@ How to create Fort:
 	qliksense generate keypair
 
 	# login to your tenant and create fort in Administration console, provide fort_certificate.crt content, fort url must be https
-	# then add fort url in your host file, i.e. (/etc/hosts) like this 127.0.0.1 myfort.example
 	# chose "File System Root" in the UI as the directory path where this installer has write access
+	# provide idp client_id and client_secret from the tenant idp
+	# then add fort url in your host file, i.e. (/etc/hosts) like this 127.0.0.1 myfort.example
 	# execute following command to install fort
 	qliksense install --acceptEULA yes --fortName <FORT_NAME> --fortPrivateKeyFile fort_private.key --fortTenantUrl <tenantUrl>
 
@@ -57,21 +58,22 @@ Usage:
   qliksense [command]
 
 Available Commands:
-  apply       install qliksense based on provided cr file
-  config      do operations on/around CR
-  crds        crds for qliksense and operators
-  delete      delete the kubernetes(k3d) cluster
-  fetch       fetch a release from qliksense-k8s repo, if version not supplied, will use from context
-  generate    generate keypair, config, etc for qliksense and operators
-  help        Help about any command
-  install     install a fort
-  keys        keys for qliksense
-  load        load a CR a file and create necessary structure for future use
-  operator    Configuration for operator
-  status      Check the status of fort if it is ready to use
-  tools       support various operations for the tools dependency for qliksense
-  uninstall   Uninstall the deployed qliksense.
-  version     Print the version number of qliksense cli
+  apply             install qliksense based on provided cr file
+  config            do operations on/around CR
+  crds              crds for qliksense and operators
+  delete            delete the kubernetes(k3d) cluster
+  fetch             fetch a release from qliksense-k8s repo, if version not supplied, will use from context
+  fetch-fort-config downlaod fort config and populate CR with it
+  generate          generate keypair, config, etc for qliksense and operators
+  help              Help about any command
+  install           install a fort
+  keys              keys for qliksense
+  load              load a CR a file and create necessary structure for future use
+  operator          Configuration for operator
+  status            Check the status of fort if it is ready to use
+  tools             support various operations for the tools dependency for qliksense
+  uninstall         Uninstall the deployed qliksense.
+  version           Print the version number of qliksense cli
 
 Flags:
   -h, --help   help for qliksense
@@ -100,3 +102,7 @@ qliksense delete
 it will delete underlying kubernetes(k3d) cluster, so next time doing `qliksense install` will take as much time as it took initially
 
 _NOTE_: The above commands will not delete fort from the tenant. It has to be done manually in Administration inside management console.
+
+## Common Issues
+
+Sometimes authentication to the fort url fails and cookies are not loaded properly in the fort domain. In that case try to visit `https://<YOUR-FORT-URL>/fort/status/` and yes slash (`/`) at the end required
